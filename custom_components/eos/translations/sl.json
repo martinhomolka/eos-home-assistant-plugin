@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Povezava z EOS Cloud",
+        "description": "Vnesite poverilnice računa EOS Cloud.",
+        "data": {
+          "email": "E-poštni naslov",
+          "password": "Geslo",
+          "stage": "Zalednje okolje"
+        },
+        "data_description": {
+          "stage": "Zalednje okolje za povezavo. Pustite na Prod, razen če je navedeno drugače."
+        }
+      },
+      "reconfigure": {
+        "title": "Ponovna konfiguracija računa EOS",
+        "description": "Posodobite poverilnice EOS Cloud in/ali zamenjajte zalednje okolje. Poverilnice se ponovno preverijo za izbrano okolje.",
+        "data": {
+          "email": "E-poštni naslov",
+          "password": "Geslo",
+          "stage": "Zalednje okolje"
+        },
+        "data_description": {
+          "stage": "Zalednje okolje za povezavo. Pustite na Prod, razen če je navedeno drugače."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Povezava z EOS Cloud ni uspela. Preverite internetno povezavo in poskusite znova.",
+      "invalid_auth": "Neveljaven e-poštni naslov ali geslo.",
+      "unknown": "Nepričakovana napaka. Za podrobnosti preverite dnevnike."
+    },
+    "abort": {
+      "already_configured": "Ta račun EOS je že konfiguriran.",
+      "reconfigure_successful": "Račun EOS posodobljen."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Možnosti EOS Sauna",
+        "description": "Prilagodite, kako pogosto Home Assistant osvežuje podatke iz EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Interval poizvedovanja v sekundah"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatura" },
+      "humidity": { "name": "Vlažnost" },
+      "heater_on_for": { "name": "Čas ogrevanja" },
+      "ready_in": { "name": "Pripravljeno čez" },
+      "last_session_duration": { "name": "Trajanje zadnje seje" },
+      "sessions_this_week": { "name": "Seje ta teden" },
+      "target_temperature": { "name": "Ciljna temperatura" },
+      "status": {
+        "name": "Stanje",
+        "state": {
+          "error": "Napaka",
+          "off": "Izklopljeno",
+          "heating": "Ogrevanje",
+          "ready": "Pripravljeno",
+          "cooling": "Ohlajanje"
+        }
+      },
+      "last_seen": { "name": "Nazadnje videno" },
+      "rssi": { "name": "Moč signala" },
+      "total_hours": { "name": "Skupne ure" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Parni generator" },
+      "presence": { "name": "Prisotnost" }
+    },
+    "light": {
+      "light": { "name": "Luč" }
+    }
+  }
+}

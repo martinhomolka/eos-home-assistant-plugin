@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "EOS Cloud'a Bağlan",
+        "description": "EOS Cloud hesap bilgilerinizi girin.",
+        "data": {
+          "email": "E-posta adresi",
+          "password": "Şifre",
+          "stage": "Arka uç ortamı"
+        },
+        "data_description": {
+          "stage": "Bağlanılacak arka uç ortamı. Aksi belirtilmedikçe Prod olarak bırakın."
+        }
+      },
+      "reconfigure": {
+        "title": "EOS hesabını yeniden yapılandır",
+        "description": "EOS Cloud kimlik bilgilerinizi güncelleyin ve/veya arka uç ortamını değiştirin. Kimlik bilgileri seçilen ortama karşı yeniden doğrulanır.",
+        "data": {
+          "email": "E-posta adresi",
+          "password": "Şifre",
+          "stage": "Arka uç ortamı"
+        },
+        "data_description": {
+          "stage": "Bağlanılacak arka uç ortamı. Aksi belirtilmedikçe Prod olarak bırakın."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "EOS Cloud'a bağlanılamadı. İnternet bağlantınızı kontrol edin ve tekrar deneyin.",
+      "invalid_auth": "Geçersiz e-posta adresi veya şifre.",
+      "unknown": "Beklenmeyen hata. Ayrıntılar için günlükleri kontrol edin."
+    },
+    "abort": {
+      "already_configured": "Bu EOS hesabı zaten yapılandırılmış.",
+      "reconfigure_successful": "EOS hesabı güncellendi."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS Sauna seçenekleri",
+        "description": "Home Assistant'ın EOS Cloud'dan verileri ne sıklıkla yenileyeceğini ayarlayın.",
+        "data": {
+          "poll_interval_seconds": "Yoklama aralığı (saniye)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Sıcaklık" },
+      "humidity": { "name": "Nem" },
+      "heater_on_for": { "name": "Isıtma süresi" },
+      "ready_in": { "name": "Hazır olma süresi" },
+      "last_session_duration": { "name": "Son oturum süresi" },
+      "sessions_this_week": { "name": "Bu hafta oturumlar" },
+      "target_temperature": { "name": "Hedef sıcaklık" },
+      "status": {
+        "name": "Durum",
+        "state": {
+          "error": "Hata",
+          "off": "Kapalı",
+          "heating": "Isınıyor",
+          "ready": "Hazır",
+          "cooling": "Soğuyor"
+        }
+      },
+      "last_seen": { "name": "Son görülme" },
+      "rssi": { "name": "Sinyal gücü" },
+      "total_hours": { "name": "Toplam saat" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Buhar jeneratörü" },
+      "presence": { "name": "Varlık" }
+    },
+    "light": {
+      "light": { "name": "Işık" }
+    }
+  }
+}

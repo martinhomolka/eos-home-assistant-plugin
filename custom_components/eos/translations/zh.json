@@ -1,0 +1,91 @@
+{
+  "title": "EOS 桑拿",
+  "config": {
+    "step": {
+      "user": {
+        "title": "连接到 EOS Cloud",
+        "description": "请输入您的 EOS Cloud 账户凭据。",
+        "data": {
+          "email": "电子邮箱地址",
+          "password": "密码",
+          "stage": "后端环境"
+        },
+        "data_description": {
+          "stage": "要连接的后端环境。除非另有说明，否则请保持为 Prod。"
+        }
+      },
+      "reconfigure": {
+        "title": "重新配置 EOS 账户",
+        "description": "更新您的 EOS Cloud 凭据和/或切换后端环境。凭据将针对所选环境重新验证。",
+        "data": {
+          "email": "电子邮箱地址",
+          "password": "密码",
+          "stage": "后端环境"
+        },
+        "data_description": {
+          "stage": "要连接的后端环境。除非另有说明，否则请保持为 Prod。"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "无法连接到 EOS Cloud。请检查您的网络连接并重试。",
+      "invalid_auth": "电子邮箱地址或密码无效。",
+      "unknown": "意外错误。请查看日志获取详细信息。"
+    },
+    "abort": {
+      "already_configured": "此 EOS 账户已配置。",
+      "reconfigure_successful": "EOS 账户已更新。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS 桑拿选项",
+        "description": "调整 Home Assistant 从 EOS Cloud 刷新数据的频率。",
+        "data": {
+          "poll_interval_seconds": "轮询间隔（秒）"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "温度" },
+      "humidity": { "name": "湿度" },
+      "heater_on_for": { "name": "加热时长" },
+      "ready_in": { "name": "预计就绪" },
+      "last_session_duration": { "name": "上次使用时长" },
+      "sessions_this_week": { "name": "本周使用次数" },
+      "target_temperature": { "name": "目标温度" },
+      "status": {
+        "name": "状态",
+        "state": {
+          "error": "错误",
+          "off": "关闭",
+          "heating": "加热中",
+          "ready": "就绪",
+          "cooling": "冷却中"
+        }
+      },
+      "last_seen": { "name": "最后在线" },
+      "rssi": { "name": "信号强度" },
+      "total_hours": { "name": "总运行时间" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "蒸汽发生器" },
+      "presence": { "name": "存在检测" }
+    },
+    "light": {
+      "light": { "name": "灯光" }
+    }
+  }
+}

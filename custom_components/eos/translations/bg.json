@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Свързване с EOS Cloud",
+        "description": "Въведете данните за вашия акаунт в EOS Cloud.",
+        "data": {
+          "email": "Имейл адрес",
+          "password": "Парола",
+          "stage": "Бекенд среда"
+        },
+        "data_description": {
+          "stage": "Бекенд среда за свързване. Оставете на Prod, освен ако не е указано друго."
+        }
+      },
+      "reconfigure": {
+        "title": "Преконфигуриране на EOS акаунт",
+        "description": "Актуализирайте данните за EOS Cloud и/или сменете бекенд средата. Данните се валидират повторно спрямо избраната среда.",
+        "data": {
+          "email": "Имейл адрес",
+          "password": "Парола",
+          "stage": "Бекенд среда"
+        },
+        "data_description": {
+          "stage": "Бекенд среда за свързване. Оставете на Prod, освен ако не е указано друго."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Неуспешно свързване с EOS Cloud. Проверете интернет връзката си и опитайте отново.",
+      "invalid_auth": "Невалиден имейл адрес или парола.",
+      "unknown": "Неочаквана грешка. Проверете логовете за подробности."
+    },
+    "abort": {
+      "already_configured": "Този EOS акаунт вече е конфигуриран.",
+      "reconfigure_successful": "EOS акаунтът е актуализиран."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Настройки на EOS Sauna",
+        "description": "Настройте колко често Home Assistant обновява данните от EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Интервал на запитване в секунди"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Температура" },
+      "humidity": { "name": "Влажност" },
+      "heater_on_for": { "name": "Време за нагряване" },
+      "ready_in": { "name": "Готовност след" },
+      "last_session_duration": { "name": "Продължителност на последната сесия" },
+      "sessions_this_week": { "name": "Сесии тази седмица" },
+      "target_temperature": { "name": "Целева температура" },
+      "status": {
+        "name": "Състояние",
+        "state": {
+          "error": "Грешка",
+          "off": "Изкл",
+          "heating": "Нагряване",
+          "ready": "Готово",
+          "cooling": "Охлаждане"
+        }
+      },
+      "last_seen": { "name": "Последно видяно" },
+      "rssi": { "name": "Сила на сигнала" },
+      "total_hours": { "name": "Общо часове" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Парогенератор" },
+      "presence": { "name": "Присъствие" }
+    },
+    "light": {
+      "light": { "name": "Светлина" }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Połącz z EOS Cloud",
+        "description": "Wprowadź dane logowania do konta EOS Cloud.",
+        "data": {
+          "email": "Adres e-mail",
+          "password": "Hasło",
+          "stage": "Środowisko backendu"
+        },
+        "data_description": {
+          "stage": "Środowisko backendu, z którym chcesz się połączyć. Pozostaw Prod, chyba że wskazano inaczej."
+        }
+      },
+      "reconfigure": {
+        "title": "Ponowna konfiguracja konta EOS",
+        "description": "Zaktualizuj dane logowania EOS Cloud i/lub zmień środowisko backendu. Dane logowania są ponownie weryfikowane w wybranym środowisku.",
+        "data": {
+          "email": "Adres e-mail",
+          "password": "Hasło",
+          "stage": "Środowisko backendu"
+        },
+        "data_description": {
+          "stage": "Środowisko backendu, z którym chcesz się połączyć. Pozostaw Prod, chyba że wskazano inaczej."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można połączyć się z EOS Cloud. Sprawdź połączenie internetowe i spróbuj ponownie.",
+      "invalid_auth": "Nieprawidłowy adres e-mail lub hasło.",
+      "unknown": "Nieoczekiwany błąd. Sprawdź logi, aby uzyskać więcej informacji."
+    },
+    "abort": {
+      "already_configured": "To konto EOS jest już skonfigurowane.",
+      "reconfigure_successful": "Konto EOS zaktualizowane."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje EOS Sauna",
+        "description": "Dostosuj częstotliwość odświeżania danych z EOS Cloud przez Home Assistant.",
+        "data": {
+          "poll_interval_seconds": "Interwał odpytywania w sekundach"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatura" },
+      "humidity": { "name": "Wilgotność" },
+      "heater_on_for": { "name": "Czas ogrzewania" },
+      "ready_in": { "name": "Gotowość za" },
+      "last_session_duration": { "name": "Czas ostatniej sesji" },
+      "sessions_this_week": { "name": "Sesje w tym tygodniu" },
+      "target_temperature": { "name": "Temperatura docelowa" },
+      "status": {
+        "name": "Status",
+        "state": {
+          "error": "Błąd",
+          "off": "Wyłączony",
+          "heating": "Nagrzewanie",
+          "ready": "Gotowy",
+          "cooling": "Chłodzenie"
+        }
+      },
+      "last_seen": { "name": "Ostatnio widziany" },
+      "rssi": { "name": "Siła sygnału" },
+      "total_hours": { "name": "Łączna liczba godzin" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Generator pary" },
+      "presence": { "name": "Obecność" }
+    },
+    "light": {
+      "light": { "name": "Światło" }
+    }
+  }
+}

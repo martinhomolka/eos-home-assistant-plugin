@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Připojení k EOS Cloud",
+        "description": "Zadejte přihlašovací údaje k účtu EOS Cloud.",
+        "data": {
+          "email": "E-mailová adresa",
+          "password": "Heslo",
+          "stage": "Prostředí backendu"
+        },
+        "data_description": {
+          "stage": "Prostředí backendu pro připojení. Ponechte na Prod, pokud není uvedeno jinak."
+        }
+      },
+      "reconfigure": {
+        "title": "Překonfigurovat účet EOS",
+        "description": "Aktualizujte přihlašovací údaje EOS Cloud a/nebo změňte prostředí backendu. Přihlašovací údaje jsou znovu ověřeny vůči vybranému prostředí.",
+        "data": {
+          "email": "E-mailová adresa",
+          "password": "Heslo",
+          "stage": "Prostředí backendu"
+        },
+        "data_description": {
+          "stage": "Prostředí backendu pro připojení. Ponechte na Prod, pokud není uvedeno jinak."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nepodařilo se připojit k EOS Cloud. Zkontrolujte připojení k internetu a zkuste to znovu.",
+      "invalid_auth": "Neplatná e-mailová adresa nebo heslo.",
+      "unknown": "Neočekávaná chyba. Podrobnosti naleznete v protokolech."
+    },
+    "abort": {
+      "already_configured": "Tento účet EOS je již nakonfigurován.",
+      "reconfigure_successful": "Účet EOS aktualizován."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Možnosti EOS Sauna",
+        "description": "Nastavte, jak často Home Assistant obnovuje data z EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Interval dotazování v sekundách"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Teplota" },
+      "humidity": { "name": "Vlhkost" },
+      "heater_on_for": { "name": "Doba topení" },
+      "ready_in": { "name": "Připraveno za" },
+      "last_session_duration": { "name": "Délka poslední relace" },
+      "sessions_this_week": { "name": "Relace tento týden" },
+      "target_temperature": { "name": "Cílová teplota" },
+      "status": {
+        "name": "Stav",
+        "state": {
+          "error": "Chyba",
+          "off": "Vypnuto",
+          "heating": "Topení",
+          "ready": "Připraveno",
+          "cooling": "Ochlazování"
+        }
+      },
+      "last_seen": { "name": "Naposledy viděno" },
+      "rssi": { "name": "Síla signálu" },
+      "total_hours": { "name": "Celkový počet hodin" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Parní generátor" },
+      "presence": { "name": "Přítomnost" }
+    },
+    "light": {
+      "light": { "name": "Světlo" }
+    }
+  }
+}

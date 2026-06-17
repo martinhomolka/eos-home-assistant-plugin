@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Csatlakozás az EOS Cloudhoz",
+        "description": "Adja meg az EOS Cloud fiókja hitelesítő adatait.",
+        "data": {
+          "email": "E-mail cím",
+          "password": "Jelszó",
+          "stage": "Backend környezet"
+        },
+        "data_description": {
+          "stage": "A backend környezet, amelyhez csatlakozni kíván. Hagyja Prod értéken, hacsak nem kap más utasítást."
+        }
+      },
+      "reconfigure": {
+        "title": "EOS fiók újrakonfigurálása",
+        "description": "Frissítse az EOS Cloud hitelesítő adatait és/vagy váltson backend környezetet. A hitelesítő adatok újra érvényesítésre kerülnek a kiválasztott környezetben.",
+        "data": {
+          "email": "E-mail cím",
+          "password": "Jelszó",
+          "stage": "Backend környezet"
+        },
+        "data_description": {
+          "stage": "A backend környezet, amelyhez csatlakozni kíván. Hagyja Prod értéken, hacsak nem kap más utasítást."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nem sikerült csatlakozni az EOS Cloudhoz. Ellenőrizze az internetkapcsolatot, és próbálja újra.",
+      "invalid_auth": "Érvénytelen e-mail cím vagy jelszó.",
+      "unknown": "Váratlan hiba. A részletekért ellenőrizze a naplókat."
+    },
+    "abort": {
+      "already_configured": "Ez az EOS fiók már konfigurálva van.",
+      "reconfigure_successful": "EOS fiók frissítve."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS Sauna beállítások",
+        "description": "Állítsa be, milyen gyakran frissítse a Home Assistant az adatokat az EOS Cloudból.",
+        "data": {
+          "poll_interval_seconds": "Lekérdezési időköz másodpercben"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Hőmérséklet" },
+      "humidity": { "name": "Páratartalom" },
+      "heater_on_for": { "name": "Fűtési időtartam" },
+      "ready_in": { "name": "Kész" },
+      "last_session_duration": { "name": "Utolsó munkamenet időtartama" },
+      "sessions_this_week": { "name": "Munkamenetek ezen a héten" },
+      "target_temperature": { "name": "Célhőmérséklet" },
+      "status": {
+        "name": "Állapot",
+        "state": {
+          "error": "Hiba",
+          "off": "Ki",
+          "heating": "Fűtés",
+          "ready": "Kész",
+          "cooling": "Hűtés"
+        }
+      },
+      "last_seen": { "name": "Utoljára látva" },
+      "rssi": { "name": "Jelerősség" },
+      "total_hours": { "name": "Összes óra" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Gőzgenerátor" },
+      "presence": { "name": "Jelenlét" }
+    },
+    "light": {
+      "light": { "name": "Lámpa" }
+    }
+  }
+}

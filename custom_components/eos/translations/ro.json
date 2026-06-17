@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectare la EOS Cloud",
+        "description": "Introduceți datele de autentificare ale contului EOS Cloud.",
+        "data": {
+          "email": "Adresă de e-mail",
+          "password": "Parolă",
+          "stage": "Mediu backend"
+        },
+        "data_description": {
+          "stage": "Mediul backend la care să vă conectați. Lăsați pe Prod dacă nu vi se indică altfel."
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigurare cont EOS",
+        "description": "Actualizați datele de autentificare EOS Cloud și/sau schimbați mediul backend. Datele de autentificare sunt revalidate pentru mediul selectat.",
+        "data": {
+          "email": "Adresă de e-mail",
+          "password": "Parolă",
+          "stage": "Mediu backend"
+        },
+        "data_description": {
+          "stage": "Mediul backend la care să vă conectați. Lăsați pe Prod dacă nu vi se indică altfel."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nu s-a putut conecta la EOS Cloud. Verificați conexiunea la internet și încercați din nou.",
+      "invalid_auth": "Adresă de e-mail sau parolă nevalidă.",
+      "unknown": "Eroare neașteptată. Verificați jurnalele pentru detalii."
+    },
+    "abort": {
+      "already_configured": "Acest cont EOS este deja configurat.",
+      "reconfigure_successful": "Cont EOS actualizat."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opțiuni EOS Sauna",
+        "description": "Ajustați cât de des Home Assistant actualizează datele din EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Interval de interogare în secunde"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatură" },
+      "humidity": { "name": "Umiditate" },
+      "heater_on_for": { "name": "Durata încălzirii" },
+      "ready_in": { "name": "Gata în" },
+      "last_session_duration": { "name": "Durata ultimei sesiuni" },
+      "sessions_this_week": { "name": "Sesiuni săptămâna aceasta" },
+      "target_temperature": { "name": "Temperatură țintă" },
+      "status": {
+        "name": "Stare",
+        "state": {
+          "error": "Eroare",
+          "off": "Oprit",
+          "heating": "Încălzire",
+          "ready": "Pregătit",
+          "cooling": "Răcire"
+        }
+      },
+      "last_seen": { "name": "Ultima activitate" },
+      "rssi": { "name": "Puterea semnalului" },
+      "total_hours": { "name": "Total ore" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Generator de abur" },
+      "presence": { "name": "Prezență" }
+    },
+    "light": {
+      "light": { "name": "Lumină" }
+    }
+  }
+}

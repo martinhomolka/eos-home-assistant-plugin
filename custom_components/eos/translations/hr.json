@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Povezivanje s EOS Cloudom",
+        "description": "Unesite vjerodajnice svog EOS Cloud računa.",
+        "data": {
+          "email": "Adresa e-pošte",
+          "password": "Lozinka",
+          "stage": "Pozadinsko okruženje"
+        },
+        "data_description": {
+          "stage": "Pozadinsko okruženje za povezivanje. Ostavite na Prod osim ako nije drugačije navedeno."
+        }
+      },
+      "reconfigure": {
+        "title": "Ponovna konfiguracija EOS računa",
+        "description": "Ažurirajte vjerodajnice EOS Clouda i/ili promijenite pozadinsko okruženje. Vjerodajnice se ponovno provjeravaju za odabrano okruženje.",
+        "data": {
+          "email": "Adresa e-pošte",
+          "password": "Lozinka",
+          "stage": "Pozadinsko okruženje"
+        },
+        "data_description": {
+          "stage": "Pozadinsko okruženje za povezivanje. Ostavite na Prod osim ako nije drugačije navedeno."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nije moguće povezati se s EOS Cloudom. Provjerite internetsku vezu i pokušajte ponovo.",
+      "invalid_auth": "Neispravna adresa e-pošte ili lozinka.",
+      "unknown": "Neočekivana pogreška. Provjerite zapisnike za detalje."
+    },
+    "abort": {
+      "already_configured": "Ovaj EOS račun je već konfiguriran.",
+      "reconfigure_successful": "EOS račun ažuriran."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Postavke EOS Sauna",
+        "description": "Podesite koliko često Home Assistant osvježava podatke iz EOS Clouda.",
+        "data": {
+          "poll_interval_seconds": "Interval ispitivanja u sekundama"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatura" },
+      "humidity": { "name": "Vlažnost" },
+      "heater_on_for": { "name": "Trajanje grijanja" },
+      "ready_in": { "name": "Spremno za" },
+      "last_session_duration": { "name": "Trajanje zadnje sesije" },
+      "sessions_this_week": { "name": "Sesije ovaj tjedan" },
+      "target_temperature": { "name": "Ciljana temperatura" },
+      "status": {
+        "name": "Stanje",
+        "state": {
+          "error": "Greška",
+          "off": "Isključeno",
+          "heating": "Grijanje",
+          "ready": "Spremno",
+          "cooling": "Hlađenje"
+        }
+      },
+      "last_seen": { "name": "Zadnji put viđeno" },
+      "rssi": { "name": "Jačina signala" },
+      "total_hours": { "name": "Ukupno sati" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Generator pare" },
+      "presence": { "name": "Prisutnost" }
+    },
+    "light": {
+      "light": { "name": "Svjetlo" }
+    }
+  }
+}

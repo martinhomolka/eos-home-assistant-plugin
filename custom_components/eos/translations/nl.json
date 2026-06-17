@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Verbinden met EOS Cloud",
+        "description": "Voer uw EOS Cloud accountgegevens in.",
+        "data": {
+          "email": "E-mailadres",
+          "password": "Wachtwoord",
+          "stage": "Backend-omgeving"
+        },
+        "data_description": {
+          "stage": "Backend-omgeving om mee te verbinden. Laat op Prod staan tenzij anders aangegeven."
+        }
+      },
+      "reconfigure": {
+        "title": "EOS-account opnieuw configureren",
+        "description": "Werk uw EOS Cloud inloggegevens bij en/of wijzig de backend-omgeving. De inloggegevens worden opnieuw gevalideerd tegen de geselecteerde omgeving.",
+        "data": {
+          "email": "E-mailadres",
+          "password": "Wachtwoord",
+          "stage": "Backend-omgeving"
+        },
+        "data_description": {
+          "stage": "Backend-omgeving om mee te verbinden. Laat op Prod staan tenzij anders aangegeven."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken met EOS Cloud. Controleer uw internetverbinding en probeer het opnieuw.",
+      "invalid_auth": "Ongeldig e-mailadres of wachtwoord.",
+      "unknown": "Onverwachte fout. Controleer de logbestanden voor meer informatie."
+    },
+    "abort": {
+      "already_configured": "Dit EOS-account is al geconfigureerd.",
+      "reconfigure_successful": "EOS-account bijgewerkt."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS Sauna opties",
+        "description": "Stel in hoe vaak Home Assistant gegevens van EOS Cloud vernieuwt.",
+        "data": {
+          "poll_interval_seconds": "Polling-interval in seconden"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatuur" },
+      "humidity": { "name": "Luchtvochtigheid" },
+      "heater_on_for": { "name": "Verwarmingsduur" },
+      "ready_in": { "name": "Gereed over" },
+      "last_session_duration": { "name": "Duur laatste sessie" },
+      "sessions_this_week": { "name": "Sessies deze week" },
+      "target_temperature": { "name": "Doeltemperatuur" },
+      "status": {
+        "name": "Status",
+        "state": {
+          "error": "Fout",
+          "off": "Uit",
+          "heating": "Verwarmen",
+          "ready": "Gereed",
+          "cooling": "Afkoelen"
+        }
+      },
+      "last_seen": { "name": "Laatst gezien" },
+      "rssi": { "name": "Signaalsterkte" },
+      "total_hours": { "name": "Totaal aantal uren" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Stoomgenerator" },
+      "presence": { "name": "Aanwezigheid" }
+    },
+    "light": {
+      "light": { "name": "Licht" }
+    }
+  }
+}

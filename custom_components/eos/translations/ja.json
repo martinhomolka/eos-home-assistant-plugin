@@ -1,0 +1,91 @@
+{
+  "title": "EOS サウナ",
+  "config": {
+    "step": {
+      "user": {
+        "title": "EOS Cloud に接続",
+        "description": "EOS Cloud アカウントの認証情報を入力してください。",
+        "data": {
+          "email": "メールアドレス",
+          "password": "パスワード",
+          "stage": "バックエンド環境"
+        },
+        "data_description": {
+          "stage": "接続するバックエンド環境。特に指示がない限り Prod のままにしてください。"
+        }
+      },
+      "reconfigure": {
+        "title": "EOS アカウントの再設定",
+        "description": "EOS Cloud の認証情報を更新し、バックエンド環境を変更できます。認証情報は選択した環境に対して再検証されます。",
+        "data": {
+          "email": "メールアドレス",
+          "password": "パスワード",
+          "stage": "バックエンド環境"
+        },
+        "data_description": {
+          "stage": "接続するバックエンド環境。特に指示がない限り Prod のままにしてください。"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "EOS Cloud に接続できませんでした。インターネット接続を確認して再試行してください。",
+      "invalid_auth": "メールアドレスまたはパスワードが無効です。",
+      "unknown": "予期しないエラーが発生しました。詳細はログを確認してください。"
+    },
+    "abort": {
+      "already_configured": "この EOS アカウントは既に設定されています。",
+      "reconfigure_successful": "EOS アカウントが更新されました。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS サウナ オプション",
+        "description": "Home Assistant が EOS Cloud からデータを更新する頻度を調整します。",
+        "data": {
+          "poll_interval_seconds": "ポーリング間隔（秒）"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "温度" },
+      "humidity": { "name": "湿度" },
+      "heater_on_for": { "name": "加熱時間" },
+      "ready_in": { "name": "準備完了まで" },
+      "last_session_duration": { "name": "前回のセッション時間" },
+      "sessions_this_week": { "name": "今週のセッション数" },
+      "target_temperature": { "name": "目標温度" },
+      "status": {
+        "name": "ステータス",
+        "state": {
+          "error": "エラー",
+          "off": "オフ",
+          "heating": "加熱中",
+          "ready": "準備完了",
+          "cooling": "冷却中"
+        }
+      },
+      "last_seen": { "name": "最終通信" },
+      "rssi": { "name": "信号強度" },
+      "total_hours": { "name": "合計時間" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "スチーマー" },
+      "presence": { "name": "在室検知" }
+    },
+    "light": {
+      "light": { "name": "照明" }
+    }
+  }
+}

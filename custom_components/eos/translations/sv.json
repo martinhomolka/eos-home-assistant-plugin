@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Anslut till EOS Cloud",
+        "description": "Ange dina inloggningsuppgifter för EOS Cloud.",
+        "data": {
+          "email": "E-postadress",
+          "password": "Lösenord",
+          "stage": "Backend-miljö"
+        },
+        "data_description": {
+          "stage": "Backend-miljö att ansluta till. Lämna på Prod om inget annat anges."
+        }
+      },
+      "reconfigure": {
+        "title": "Omkonfigurera EOS-konto",
+        "description": "Uppdatera dina EOS Cloud-uppgifter och/eller byt backend-miljö. Uppgifterna valideras på nytt mot den valda miljön.",
+        "data": {
+          "email": "E-postadress",
+          "password": "Lösenord",
+          "stage": "Backend-miljö"
+        },
+        "data_description": {
+          "stage": "Backend-miljö att ansluta till. Lämna på Prod om inget annat anges."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunde inte ansluta till EOS Cloud. Kontrollera din internetanslutning och försök igen.",
+      "invalid_auth": "Ogiltig e-postadress eller lösenord.",
+      "unknown": "Oväntat fel. Kontrollera loggarna för mer information."
+    },
+    "abort": {
+      "already_configured": "Detta EOS-konto är redan konfigurerat.",
+      "reconfigure_successful": "EOS-konto uppdaterat."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS Sauna-inställningar",
+        "description": "Ställ in hur ofta Home Assistant uppdaterar data från EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Pollningsintervall i sekunder"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatur" },
+      "humidity": { "name": "Luftfuktighet" },
+      "heater_on_for": { "name": "Uppvärmningstid" },
+      "ready_in": { "name": "Klar om" },
+      "last_session_duration": { "name": "Senaste sessionens längd" },
+      "sessions_this_week": { "name": "Sessioner denna vecka" },
+      "target_temperature": { "name": "Måltemperatur" },
+      "status": {
+        "name": "Status",
+        "state": {
+          "error": "Fel",
+          "off": "Av",
+          "heating": "Uppvärmning",
+          "ready": "Klar",
+          "cooling": "Nedkylning"
+        }
+      },
+      "last_seen": { "name": "Senast sedd" },
+      "rssi": { "name": "Signalstyrka" },
+      "total_hours": { "name": "Totalt antal timmar" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Ånggenerator" },
+      "presence": { "name": "Närvaro" }
+    },
+    "light": {
+      "light": { "name": "Ljus" }
+    }
+  }
+}

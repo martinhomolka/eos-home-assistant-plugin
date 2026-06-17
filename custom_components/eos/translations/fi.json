@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Yhdistä EOS Cloudiin",
+        "description": "Syötä EOS Cloud -tilisi tunnukset.",
+        "data": {
+          "email": "Sähköpostiosoite",
+          "password": "Salasana",
+          "stage": "Taustaympäristö"
+        },
+        "data_description": {
+          "stage": "Taustaympäristö, johon yhdistetään. Jätä Prod-tilaan, ellei toisin ohjeisteta."
+        }
+      },
+      "reconfigure": {
+        "title": "Määritä EOS-tili uudelleen",
+        "description": "Päivitä EOS Cloud -tunnuksesi ja/tai vaihda taustaympäristöä. Tunnukset tarkistetaan uudelleen valittua ympäristöä vasten.",
+        "data": {
+          "email": "Sähköpostiosoite",
+          "password": "Salasana",
+          "stage": "Taustaympäristö"
+        },
+        "data_description": {
+          "stage": "Taustaympäristö, johon yhdistetään. Jätä Prod-tilaan, ellei toisin ohjeisteta."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Yhteys EOS Cloudiin epäonnistui. Tarkista internetyhteytesi ja yritä uudelleen.",
+      "invalid_auth": "Virheellinen sähköpostiosoite tai salasana.",
+      "unknown": "Odottamaton virhe. Tarkista lokit lisätietoja varten."
+    },
+    "abort": {
+      "already_configured": "Tämä EOS-tili on jo määritetty.",
+      "reconfigure_successful": "EOS-tili päivitetty."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS Sauna -asetukset",
+        "description": "Säädä, kuinka usein Home Assistant päivittää tiedot EOS Cloudista.",
+        "data": {
+          "poll_interval_seconds": "Kyselyväli sekunteina"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Lämpötila" },
+      "humidity": { "name": "Kosteus" },
+      "heater_on_for": { "name": "Lämmitysaika" },
+      "ready_in": { "name": "Valmis" },
+      "last_session_duration": { "name": "Viimeisen kerran kesto" },
+      "sessions_this_week": { "name": "Kerrat tällä viikolla" },
+      "target_temperature": { "name": "Tavoitelämpötila" },
+      "status": {
+        "name": "Tila",
+        "state": {
+          "error": "Virhe",
+          "off": "Pois",
+          "heating": "Lämpenee",
+          "ready": "Valmis",
+          "cooling": "Jäähtyy"
+        }
+      },
+      "last_seen": { "name": "Viimeksi nähty" },
+      "rssi": { "name": "Signaalin voimakkuus" },
+      "total_hours": { "name": "Tunnit yhteensä" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Höyrystin" },
+      "presence": { "name": "Läsnäolo" }
+    },
+    "light": {
+      "light": { "name": "Valo" }
+    }
+  }
+}

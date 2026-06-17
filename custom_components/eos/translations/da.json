@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Opret forbindelse til EOS Cloud",
+        "description": "Indtast dine EOS Cloud kontooplysninger.",
+        "data": {
+          "email": "E-mailadresse",
+          "password": "Adgangskode",
+          "stage": "Backend-miljø"
+        },
+        "data_description": {
+          "stage": "Backend-miljø at oprette forbindelse til. Behold Prod medmindre andet er angivet."
+        }
+      },
+      "reconfigure": {
+        "title": "Genkonfigurer EOS-konto",
+        "description": "Opdater dine EOS Cloud legitimationsoplysninger og/eller skift backend-miljø. Legitimationsoplysningerne valideres igen mod det valgte miljø.",
+        "data": {
+          "email": "E-mailadresse",
+          "password": "Adgangskode",
+          "stage": "Backend-miljø"
+        },
+        "data_description": {
+          "stage": "Backend-miljø at oprette forbindelse til. Behold Prod medmindre andet er angivet."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunne ikke oprette forbindelse til EOS Cloud. Kontrollér din internetforbindelse, og prøv igen.",
+      "invalid_auth": "Ugyldig e-mailadresse eller adgangskode.",
+      "unknown": "Uventet fejl. Se logfilerne for detaljer."
+    },
+    "abort": {
+      "already_configured": "Denne EOS-konto er allerede konfigureret.",
+      "reconfigure_successful": "EOS-konto opdateret."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "EOS Sauna indstillinger",
+        "description": "Juster hvor ofte Home Assistant opdaterer data fra EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Forespørgselsinterval i sekunder"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Temperatur" },
+      "humidity": { "name": "Luftfugtighed" },
+      "heater_on_for": { "name": "Opvarmningstid" },
+      "ready_in": { "name": "Klar om" },
+      "last_session_duration": { "name": "Sidste sessions varighed" },
+      "sessions_this_week": { "name": "Sessioner denne uge" },
+      "target_temperature": { "name": "Måltemperatur" },
+      "status": {
+        "name": "Status",
+        "state": {
+          "error": "Fejl",
+          "off": "Slukket",
+          "heating": "Opvarmning",
+          "ready": "Klar",
+          "cooling": "Afkøling"
+        }
+      },
+      "last_seen": { "name": "Sidst set" },
+      "rssi": { "name": "Signalstyrke" },
+      "total_hours": { "name": "Timer i alt" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Dampgenerator" },
+      "presence": { "name": "Tilstedeværelse" }
+    },
+    "light": {
+      "light": { "name": "Lys" }
+    }
+  }
+}

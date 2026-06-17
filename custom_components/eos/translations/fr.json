@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connexion à EOS Cloud",
+        "description": "Entrez vos identifiants de compte EOS Cloud.",
+        "data": {
+          "email": "Adresse e-mail",
+          "password": "Mot de passe",
+          "stage": "Environnement backend"
+        },
+        "data_description": {
+          "stage": "Environnement backend auquel se connecter. Laissez sur Prod sauf indication contraire."
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigurer le compte EOS",
+        "description": "Mettez à jour vos identifiants EOS Cloud et/ou changez l'environnement backend. Les identifiants sont revalidés sur l'environnement sélectionné.",
+        "data": {
+          "email": "Adresse e-mail",
+          "password": "Mot de passe",
+          "stage": "Environnement backend"
+        },
+        "data_description": {
+          "stage": "Environnement backend auquel se connecter. Laissez sur Prod sauf indication contraire."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de se connecter à EOS Cloud. Vérifiez votre connexion Internet et réessayez.",
+      "invalid_auth": "Adresse e-mail ou mot de passe invalide.",
+      "unknown": "Erreur inattendue. Consultez les journaux pour plus de détails."
+    },
+    "abort": {
+      "already_configured": "Ce compte EOS est déjà configuré.",
+      "reconfigure_successful": "Compte EOS mis à jour."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options EOS Sauna",
+        "description": "Ajustez la fréquence de rafraîchissement des données depuis EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Intervalle d'interrogation en secondes"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Température" },
+      "humidity": { "name": "Humidité" },
+      "heater_on_for": { "name": "Durée de chauffage" },
+      "ready_in": { "name": "Prêt dans" },
+      "last_session_duration": { "name": "Durée dernière session" },
+      "sessions_this_week": { "name": "Sessions cette semaine" },
+      "target_temperature": { "name": "Température cible" },
+      "status": {
+        "name": "État",
+        "state": {
+          "error": "Erreur",
+          "off": "Arrêt",
+          "heating": "Chauffage",
+          "ready": "Prêt",
+          "cooling": "Refroidissement"
+        }
+      },
+      "last_seen": { "name": "Dernière activité" },
+      "rssi": { "name": "Puissance du signal" },
+      "total_hours": { "name": "Heures totales" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Générateur de vapeur" },
+      "presence": { "name": "Présence" }
+    },
+    "light": {
+      "light": { "name": "Lumière" }
+    }
+  }
+}

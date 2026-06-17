@@ -1,0 +1,91 @@
+{
+  "title": "EOS Sauna",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Подключение к EOS Cloud",
+        "description": "Введите учётные данные вашей учётной записи EOS Cloud.",
+        "data": {
+          "email": "Адрес электронной почты",
+          "password": "Пароль",
+          "stage": "Среда бэкенда"
+        },
+        "data_description": {
+          "stage": "Среда бэкенда для подключения. Оставьте Prod, если не указано иное."
+        }
+      },
+      "reconfigure": {
+        "title": "Перенастроить учётную запись EOS",
+        "description": "Обновите учётные данные EOS Cloud и/или измените среду бэкенда. Учётные данные повторно проверяются для выбранной среды.",
+        "data": {
+          "email": "Адрес электронной почты",
+          "password": "Пароль",
+          "stage": "Среда бэкенда"
+        },
+        "data_description": {
+          "stage": "Среда бэкенда для подключения. Оставьте Prod, если не указано иное."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не удалось подключиться к EOS Cloud. Проверьте подключение к Интернету и повторите попытку.",
+      "invalid_auth": "Неверный адрес электронной почты или пароль.",
+      "unknown": "Непредвиденная ошибка. Проверьте журналы для получения подробной информации."
+    },
+    "abort": {
+      "already_configured": "Эта учётная запись EOS уже настроена.",
+      "reconfigure_successful": "Учётная запись EOS обновлена."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Настройки EOS Sauna",
+        "description": "Настройте частоту обновления данных из EOS Cloud.",
+        "data": {
+          "poll_interval_seconds": "Интервал опроса в секундах"
+        }
+      }
+    }
+  },
+  "selector": {
+    "stage": {
+      "options": {
+        "prod": "Prod",
+        "alpha": "Alpha",
+        "dev": "Dev"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": { "name": "Температура" },
+      "humidity": { "name": "Влажность" },
+      "heater_on_for": { "name": "Время нагрева" },
+      "ready_in": { "name": "Готовность через" },
+      "last_session_duration": { "name": "Длительность последнего сеанса" },
+      "sessions_this_week": { "name": "Сеансы за неделю" },
+      "target_temperature": { "name": "Целевая температура" },
+      "status": {
+        "name": "Статус",
+        "state": {
+          "error": "Ошибка",
+          "off": "Выкл",
+          "heating": "Нагрев",
+          "ready": "Готово",
+          "cooling": "Охлаждение"
+        }
+      },
+      "last_seen": { "name": "Последнее обновление" },
+      "rssi": { "name": "Уровень сигнала" },
+      "total_hours": { "name": "Общее время работы" }
+    },
+    "binary_sensor": {
+      "steamer": { "name": "Парогенератор" },
+      "presence": { "name": "Присутствие" }
+    },
+    "light": {
+      "light": { "name": "Свет" }
+    }
+  }
+}
