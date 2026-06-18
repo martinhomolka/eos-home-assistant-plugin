@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatura" },
-      "humidity": { "name": "Wilgotność" },
-      "heater_on_for": { "name": "Czas ogrzewania" },
-      "ready_in": { "name": "Gotowość za" },
-      "last_session_duration": { "name": "Czas ostatniej sesji" },
-      "sessions_this_week": { "name": "Sesje w tym tygodniu" },
-      "target_temperature": { "name": "Temperatura docelowa" },
+      "temperature": {
+        "name": "Temperatura"
+      },
+      "humidity": {
+        "name": "Wilgotność"
+      },
+      "heater_on_for": {
+        "name": "Czas ogrzewania"
+      },
+      "ready_in": {
+        "name": "Gotowość za"
+      },
+      "last_session_duration": {
+        "name": "Czas ostatniej sesji"
+      },
+      "sessions_this_week": {
+        "name": "Sesje w tym tygodniu"
+      },
+      "target_temperature": {
+        "name": "Temperatura docelowa"
+      },
       "status": {
         "name": "Status",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Chłodzenie"
         }
       },
-      "last_seen": { "name": "Ostatnio widziany" },
-      "rssi": { "name": "Siła sygnału" },
-      "total_hours": { "name": "Łączna liczba godzin" }
+      "last_seen": {
+        "name": "Ostatnio widziany"
+      },
+      "rssi": {
+        "name": "Siła sygnału"
+      },
+      "total_hours": {
+        "name": "Łączna liczba godzin"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Generator pary" },
-      "presence": { "name": "Obecność" }
+      "steamer": {
+        "name": "Generator pary"
+      },
+      "presence": {
+        "name": "Obecność"
+      },
+      "connectivity": {
+        "name": "Połączenie"
+      }
     },
     "light": {
-      "light": { "name": "Światło" }
+      "light": {
+        "name": "Światło"
+      }
     }
   }
 }

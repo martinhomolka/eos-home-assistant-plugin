@@ -25,6 +25,8 @@ async def async_setup_entry(
     entities: list[BinarySensorEntity] = []
     for device_id, device_data in coordinator.devices.items():
         device_type = coordinator.device_type(device_id)
+        # Connection status for all device types
+        entities.append(EosConnectivityBinarySensor(coordinator, device_id, device_data))
         if device_type == DEVICE_TYPE_COMMAND:
             entities.append(EosSteamerBinarySensor(coordinator, device_id, device_data))
         elif device_type == DEVICE_TYPE_H2N:
@@ -55,6 +57,27 @@ class EosSteamerBinarySensor(EosBaseEntity, BinarySensorEntity):
     def is_on(self) -> bool:
         """Return true if the steamer is on."""
         return self.coordinator.steamer_reports_on(self._device_id)
+
+
+class EosConnectivityBinarySensor(EosBaseEntity, BinarySensorEntity):
+    """Report whether the device is connected to the cloud."""
+
+    _attr_device_class = BinarySensorDeviceClass.CONNECTIVITY
+    _attr_translation_key = "connectivity"
+
+    def __init__(
+        self,
+        coordinator: EosDataUpdateCoordinator,
+        device_id: str,
+        device_data: dict[str, Any],
+    ) -> None:
+        """Initialize the connectivity binary sensor."""
+        super().__init__(coordinator, device_id, device_data, "connectivity")
+
+    @property
+    def is_on(self) -> bool | None:
+        """Return true if the device is connected."""
+        return self.coordinator.device_connected(self._device_id)
 
 
 class EosPresenceBinarySensor(EosBaseEntity, BinarySensorEntity):

@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperature" },
-      "humidity": { "name": "Humidity" },
-      "heater_on_for": { "name": "Heating duration" },
-      "ready_in": { "name": "Ready in" },
-      "last_session_duration": { "name": "Last session duration" },
-      "sessions_this_week": { "name": "Sessions this week" },
-      "target_temperature": { "name": "Target temperature" },
+      "temperature": {
+        "name": "Temperature"
+      },
+      "humidity": {
+        "name": "Humidity"
+      },
+      "heater_on_for": {
+        "name": "Heating duration"
+      },
+      "ready_in": {
+        "name": "Ready in"
+      },
+      "last_session_duration": {
+        "name": "Last session duration"
+      },
+      "sessions_this_week": {
+        "name": "Sessions this week"
+      },
+      "target_temperature": {
+        "name": "Target temperature"
+      },
       "status": {
         "name": "Status",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Cooling"
         }
       },
-      "last_seen": { "name": "Last seen" },
-      "rssi": { "name": "Signal strength" },
-      "total_hours": { "name": "Total hours" }
+      "last_seen": {
+        "name": "Last seen"
+      },
+      "rssi": {
+        "name": "Signal strength"
+      },
+      "total_hours": {
+        "name": "Total hours"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Steamer" },
-      "presence": { "name": "Presence" }
+      "steamer": {
+        "name": "Steamer"
+      },
+      "presence": {
+        "name": "Presence"
+      },
+      "connectivity": {
+        "name": "Connection"
+      }
     },
     "light": {
-      "light": { "name": "Light" }
+      "light": {
+        "name": "Light"
+      }
     }
   }
 }

@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatur" },
-      "humidity": { "name": "Luftfuktighet" },
-      "heater_on_for": { "name": "Uppvärmningstid" },
-      "ready_in": { "name": "Klar om" },
-      "last_session_duration": { "name": "Senaste sessionens längd" },
-      "sessions_this_week": { "name": "Sessioner denna vecka" },
-      "target_temperature": { "name": "Måltemperatur" },
+      "temperature": {
+        "name": "Temperatur"
+      },
+      "humidity": {
+        "name": "Luftfuktighet"
+      },
+      "heater_on_for": {
+        "name": "Uppvärmningstid"
+      },
+      "ready_in": {
+        "name": "Klar om"
+      },
+      "last_session_duration": {
+        "name": "Senaste sessionens längd"
+      },
+      "sessions_this_week": {
+        "name": "Sessioner denna vecka"
+      },
+      "target_temperature": {
+        "name": "Måltemperatur"
+      },
       "status": {
         "name": "Status",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Nedkylning"
         }
       },
-      "last_seen": { "name": "Senast sedd" },
-      "rssi": { "name": "Signalstyrka" },
-      "total_hours": { "name": "Totalt antal timmar" }
+      "last_seen": {
+        "name": "Senast sedd"
+      },
+      "rssi": {
+        "name": "Signalstyrka"
+      },
+      "total_hours": {
+        "name": "Totalt antal timmar"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Ånggenerator" },
-      "presence": { "name": "Närvaro" }
+      "steamer": {
+        "name": "Ånggenerator"
+      },
+      "presence": {
+        "name": "Närvaro"
+      },
+      "connectivity": {
+        "name": "Anslutning"
+      }
     },
     "light": {
-      "light": { "name": "Ljus" }
+      "light": {
+        "name": "Ljus"
+      }
     }
   }
 }

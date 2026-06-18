@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Teplota" },
-      "humidity": { "name": "Vlhkost" },
-      "heater_on_for": { "name": "Doba topení" },
-      "ready_in": { "name": "Připraveno za" },
-      "last_session_duration": { "name": "Délka poslední relace" },
-      "sessions_this_week": { "name": "Relace tento týden" },
-      "target_temperature": { "name": "Cílová teplota" },
+      "temperature": {
+        "name": "Teplota"
+      },
+      "humidity": {
+        "name": "Vlhkost"
+      },
+      "heater_on_for": {
+        "name": "Doba topení"
+      },
+      "ready_in": {
+        "name": "Připraveno za"
+      },
+      "last_session_duration": {
+        "name": "Délka poslední relace"
+      },
+      "sessions_this_week": {
+        "name": "Relace tento týden"
+      },
+      "target_temperature": {
+        "name": "Cílová teplota"
+      },
       "status": {
         "name": "Stav",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Ochlazování"
         }
       },
-      "last_seen": { "name": "Naposledy viděno" },
-      "rssi": { "name": "Síla signálu" },
-      "total_hours": { "name": "Celkový počet hodin" }
+      "last_seen": {
+        "name": "Naposledy viděno"
+      },
+      "rssi": {
+        "name": "Síla signálu"
+      },
+      "total_hours": {
+        "name": "Celkový počet hodin"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Parní generátor" },
-      "presence": { "name": "Přítomnost" }
+      "steamer": {
+        "name": "Parní generátor"
+      },
+      "presence": {
+        "name": "Přítomnost"
+      },
+      "connectivity": {
+        "name": "Připojení"
+      }
     },
     "light": {
-      "light": { "name": "Světlo" }
+      "light": {
+        "name": "Světlo"
+      }
     }
   }
 }

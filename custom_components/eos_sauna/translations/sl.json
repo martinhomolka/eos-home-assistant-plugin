@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatura" },
-      "humidity": { "name": "Vlažnost" },
-      "heater_on_for": { "name": "Čas ogrevanja" },
-      "ready_in": { "name": "Pripravljeno čez" },
-      "last_session_duration": { "name": "Trajanje zadnje seje" },
-      "sessions_this_week": { "name": "Seje ta teden" },
-      "target_temperature": { "name": "Ciljna temperatura" },
+      "temperature": {
+        "name": "Temperatura"
+      },
+      "humidity": {
+        "name": "Vlažnost"
+      },
+      "heater_on_for": {
+        "name": "Čas ogrevanja"
+      },
+      "ready_in": {
+        "name": "Pripravljeno čez"
+      },
+      "last_session_duration": {
+        "name": "Trajanje zadnje seje"
+      },
+      "sessions_this_week": {
+        "name": "Seje ta teden"
+      },
+      "target_temperature": {
+        "name": "Ciljna temperatura"
+      },
       "status": {
         "name": "Stanje",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Ohlajanje"
         }
       },
-      "last_seen": { "name": "Nazadnje videno" },
-      "rssi": { "name": "Moč signala" },
-      "total_hours": { "name": "Skupne ure" }
+      "last_seen": {
+        "name": "Nazadnje videno"
+      },
+      "rssi": {
+        "name": "Moč signala"
+      },
+      "total_hours": {
+        "name": "Skupne ure"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Parni generator" },
-      "presence": { "name": "Prisotnost" }
+      "steamer": {
+        "name": "Parni generator"
+      },
+      "presence": {
+        "name": "Prisotnost"
+      },
+      "connectivity": {
+        "name": "Povezava"
+      }
     },
     "light": {
-      "light": { "name": "Luč" }
+      "light": {
+        "name": "Luč"
+      }
     }
   }
 }

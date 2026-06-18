@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatur" },
-      "humidity": { "name": "Luftfugtighed" },
-      "heater_on_for": { "name": "Opvarmningstid" },
-      "ready_in": { "name": "Klar om" },
-      "last_session_duration": { "name": "Sidste sessions varighed" },
-      "sessions_this_week": { "name": "Sessioner denne uge" },
-      "target_temperature": { "name": "Måltemperatur" },
+      "temperature": {
+        "name": "Temperatur"
+      },
+      "humidity": {
+        "name": "Luftfugtighed"
+      },
+      "heater_on_for": {
+        "name": "Opvarmningstid"
+      },
+      "ready_in": {
+        "name": "Klar om"
+      },
+      "last_session_duration": {
+        "name": "Sidste sessions varighed"
+      },
+      "sessions_this_week": {
+        "name": "Sessioner denne uge"
+      },
+      "target_temperature": {
+        "name": "Måltemperatur"
+      },
       "status": {
         "name": "Status",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Afkøling"
         }
       },
-      "last_seen": { "name": "Sidst set" },
-      "rssi": { "name": "Signalstyrke" },
-      "total_hours": { "name": "Timer i alt" }
+      "last_seen": {
+        "name": "Sidst set"
+      },
+      "rssi": {
+        "name": "Signalstyrke"
+      },
+      "total_hours": {
+        "name": "Timer i alt"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Dampgenerator" },
-      "presence": { "name": "Tilstedeværelse" }
+      "steamer": {
+        "name": "Dampgenerator"
+      },
+      "presence": {
+        "name": "Tilstedeværelse"
+      },
+      "connectivity": {
+        "name": "Forbindelse"
+      }
     },
     "light": {
-      "light": { "name": "Lys" }
+      "light": {
+        "name": "Lys"
+      }
     }
   }
 }

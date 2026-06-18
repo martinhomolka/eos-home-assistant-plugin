@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Sıcaklık" },
-      "humidity": { "name": "Nem" },
-      "heater_on_for": { "name": "Isıtma süresi" },
-      "ready_in": { "name": "Hazır olma süresi" },
-      "last_session_duration": { "name": "Son oturum süresi" },
-      "sessions_this_week": { "name": "Bu hafta oturumlar" },
-      "target_temperature": { "name": "Hedef sıcaklık" },
+      "temperature": {
+        "name": "Sıcaklık"
+      },
+      "humidity": {
+        "name": "Nem"
+      },
+      "heater_on_for": {
+        "name": "Isıtma süresi"
+      },
+      "ready_in": {
+        "name": "Hazır olma süresi"
+      },
+      "last_session_duration": {
+        "name": "Son oturum süresi"
+      },
+      "sessions_this_week": {
+        "name": "Bu hafta oturumlar"
+      },
+      "target_temperature": {
+        "name": "Hedef sıcaklık"
+      },
       "status": {
         "name": "Durum",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Soğuyor"
         }
       },
-      "last_seen": { "name": "Son görülme" },
-      "rssi": { "name": "Sinyal gücü" },
-      "total_hours": { "name": "Toplam saat" }
+      "last_seen": {
+        "name": "Son görülme"
+      },
+      "rssi": {
+        "name": "Sinyal gücü"
+      },
+      "total_hours": {
+        "name": "Toplam saat"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Buhar jeneratörü" },
-      "presence": { "name": "Varlık" }
+      "steamer": {
+        "name": "Buhar jeneratörü"
+      },
+      "presence": {
+        "name": "Varlık"
+      },
+      "connectivity": {
+        "name": "Bağlantı"
+      }
     },
     "light": {
-      "light": { "name": "Işık" }
+      "light": {
+        "name": "Işık"
+      }
     }
   }
 }

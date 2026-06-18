@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatuur" },
-      "humidity": { "name": "Luchtvochtigheid" },
-      "heater_on_for": { "name": "Verwarmingsduur" },
-      "ready_in": { "name": "Gereed over" },
-      "last_session_duration": { "name": "Duur laatste sessie" },
-      "sessions_this_week": { "name": "Sessies deze week" },
-      "target_temperature": { "name": "Doeltemperatuur" },
+      "temperature": {
+        "name": "Temperatuur"
+      },
+      "humidity": {
+        "name": "Luchtvochtigheid"
+      },
+      "heater_on_for": {
+        "name": "Verwarmingsduur"
+      },
+      "ready_in": {
+        "name": "Gereed over"
+      },
+      "last_session_duration": {
+        "name": "Duur laatste sessie"
+      },
+      "sessions_this_week": {
+        "name": "Sessies deze week"
+      },
+      "target_temperature": {
+        "name": "Doeltemperatuur"
+      },
       "status": {
         "name": "Status",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Afkoelen"
         }
       },
-      "last_seen": { "name": "Laatst gezien" },
-      "rssi": { "name": "Signaalsterkte" },
-      "total_hours": { "name": "Totaal aantal uren" }
+      "last_seen": {
+        "name": "Laatst gezien"
+      },
+      "rssi": {
+        "name": "Signaalsterkte"
+      },
+      "total_hours": {
+        "name": "Totaal aantal uren"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Stoomgenerator" },
-      "presence": { "name": "Aanwezigheid" }
+      "steamer": {
+        "name": "Stoomgenerator"
+      },
+      "presence": {
+        "name": "Aanwezigheid"
+      },
+      "connectivity": {
+        "name": "Verbinding"
+      }
     },
     "light": {
-      "light": { "name": "Licht" }
+      "light": {
+        "name": "Licht"
+      }
     }
   }
 }

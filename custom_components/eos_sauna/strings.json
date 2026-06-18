@@ -82,6 +82,7 @@
     },
     "binary_sensor": {
       "steamer": { "name": "Steamer" },
+      "connectivity": { "name": "Connection" },
       "presence": { "name": "Presence" }
     },
     "light": {

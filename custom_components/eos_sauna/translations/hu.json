@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Hőmérséklet" },
-      "humidity": { "name": "Páratartalom" },
-      "heater_on_for": { "name": "Fűtési időtartam" },
-      "ready_in": { "name": "Kész" },
-      "last_session_duration": { "name": "Utolsó munkamenet időtartama" },
-      "sessions_this_week": { "name": "Munkamenetek ezen a héten" },
-      "target_temperature": { "name": "Célhőmérséklet" },
+      "temperature": {
+        "name": "Hőmérséklet"
+      },
+      "humidity": {
+        "name": "Páratartalom"
+      },
+      "heater_on_for": {
+        "name": "Fűtési időtartam"
+      },
+      "ready_in": {
+        "name": "Kész"
+      },
+      "last_session_duration": {
+        "name": "Utolsó munkamenet időtartama"
+      },
+      "sessions_this_week": {
+        "name": "Munkamenetek ezen a héten"
+      },
+      "target_temperature": {
+        "name": "Célhőmérséklet"
+      },
       "status": {
         "name": "Állapot",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Hűtés"
         }
       },
-      "last_seen": { "name": "Utoljára látva" },
-      "rssi": { "name": "Jelerősség" },
-      "total_hours": { "name": "Összes óra" }
+      "last_seen": {
+        "name": "Utoljára látva"
+      },
+      "rssi": {
+        "name": "Jelerősség"
+      },
+      "total_hours": {
+        "name": "Összes óra"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Gőzgenerátor" },
-      "presence": { "name": "Jelenlét" }
+      "steamer": {
+        "name": "Gőzgenerátor"
+      },
+      "presence": {
+        "name": "Jelenlét"
+      },
+      "connectivity": {
+        "name": "Kapcsolat"
+      }
     },
     "light": {
-      "light": { "name": "Lámpa" }
+      "light": {
+        "name": "Lámpa"
+      }
     }
   }
 }

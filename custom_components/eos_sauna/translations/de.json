@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatur" },
-      "humidity": { "name": "Luftfeuchtigkeit" },
-      "heater_on_for": { "name": "Heizdauer" },
-      "ready_in": { "name": "Bereit in" },
-      "last_session_duration": { "name": "Letzte Sitzungsdauer" },
-      "sessions_this_week": { "name": "Sitzungen diese Woche" },
-      "target_temperature": { "name": "Zieltemperatur" },
+      "temperature": {
+        "name": "Temperatur"
+      },
+      "humidity": {
+        "name": "Luftfeuchtigkeit"
+      },
+      "heater_on_for": {
+        "name": "Heizdauer"
+      },
+      "ready_in": {
+        "name": "Bereit in"
+      },
+      "last_session_duration": {
+        "name": "Letzte Sitzungsdauer"
+      },
+      "sessions_this_week": {
+        "name": "Sitzungen diese Woche"
+      },
+      "target_temperature": {
+        "name": "Zieltemperatur"
+      },
       "status": {
         "name": "Status",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Abkühlen"
         }
       },
-      "last_seen": { "name": "Zuletzt gesehen" },
-      "rssi": { "name": "Signalstärke" },
-      "total_hours": { "name": "Gesamtstunden" }
+      "last_seen": {
+        "name": "Zuletzt gesehen"
+      },
+      "rssi": {
+        "name": "Signalstärke"
+      },
+      "total_hours": {
+        "name": "Gesamtstunden"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Dampferzeuger" },
-      "presence": { "name": "Anwesenheit" }
+      "steamer": {
+        "name": "Dampferzeuger"
+      },
+      "presence": {
+        "name": "Anwesenheit"
+      },
+      "connectivity": {
+        "name": "Verbindung"
+      }
     },
     "light": {
-      "light": { "name": "Licht" }
+      "light": {
+        "name": "Licht"
+      }
     }
   }
 }

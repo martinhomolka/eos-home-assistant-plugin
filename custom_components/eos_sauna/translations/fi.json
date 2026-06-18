@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Lämpötila" },
-      "humidity": { "name": "Kosteus" },
-      "heater_on_for": { "name": "Lämmitysaika" },
-      "ready_in": { "name": "Valmis" },
-      "last_session_duration": { "name": "Viimeisen kerran kesto" },
-      "sessions_this_week": { "name": "Kerrat tällä viikolla" },
-      "target_temperature": { "name": "Tavoitelämpötila" },
+      "temperature": {
+        "name": "Lämpötila"
+      },
+      "humidity": {
+        "name": "Kosteus"
+      },
+      "heater_on_for": {
+        "name": "Lämmitysaika"
+      },
+      "ready_in": {
+        "name": "Valmis"
+      },
+      "last_session_duration": {
+        "name": "Viimeisen kerran kesto"
+      },
+      "sessions_this_week": {
+        "name": "Kerrat tällä viikolla"
+      },
+      "target_temperature": {
+        "name": "Tavoitelämpötila"
+      },
       "status": {
         "name": "Tila",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Jäähtyy"
         }
       },
-      "last_seen": { "name": "Viimeksi nähty" },
-      "rssi": { "name": "Signaalin voimakkuus" },
-      "total_hours": { "name": "Tunnit yhteensä" }
+      "last_seen": {
+        "name": "Viimeksi nähty"
+      },
+      "rssi": {
+        "name": "Signaalin voimakkuus"
+      },
+      "total_hours": {
+        "name": "Tunnit yhteensä"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Höyrystin" },
-      "presence": { "name": "Läsnäolo" }
+      "steamer": {
+        "name": "Höyrystin"
+      },
+      "presence": {
+        "name": "Läsnäolo"
+      },
+      "connectivity": {
+        "name": "Yhteys"
+      }
     },
     "light": {
-      "light": { "name": "Valo" }
+      "light": {
+        "name": "Valo"
+      }
     }
   }
 }

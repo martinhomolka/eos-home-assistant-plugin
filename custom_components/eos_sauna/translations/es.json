@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatura" },
-      "humidity": { "name": "Humedad" },
-      "heater_on_for": { "name": "Duración de calentamiento" },
-      "ready_in": { "name": "Listo en" },
-      "last_session_duration": { "name": "Duración última sesión" },
-      "sessions_this_week": { "name": "Sesiones esta semana" },
-      "target_temperature": { "name": "Temperatura objetivo" },
+      "temperature": {
+        "name": "Temperatura"
+      },
+      "humidity": {
+        "name": "Humedad"
+      },
+      "heater_on_for": {
+        "name": "Duración de calentamiento"
+      },
+      "ready_in": {
+        "name": "Listo en"
+      },
+      "last_session_duration": {
+        "name": "Duración última sesión"
+      },
+      "sessions_this_week": {
+        "name": "Sesiones esta semana"
+      },
+      "target_temperature": {
+        "name": "Temperatura objetivo"
+      },
       "status": {
         "name": "Estado",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Enfriando"
         }
       },
-      "last_seen": { "name": "Última vez visto" },
-      "rssi": { "name": "Intensidad de señal" },
-      "total_hours": { "name": "Horas totales" }
+      "last_seen": {
+        "name": "Última vez visto"
+      },
+      "rssi": {
+        "name": "Intensidad de señal"
+      },
+      "total_hours": {
+        "name": "Horas totales"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Generador de vapor" },
-      "presence": { "name": "Presencia" }
+      "steamer": {
+        "name": "Generador de vapor"
+      },
+      "presence": {
+        "name": "Presencia"
+      },
+      "connectivity": {
+        "name": "Conexión"
+      }
     },
     "light": {
-      "light": { "name": "Luz" }
+      "light": {
+        "name": "Luz"
+      }
     }
   }
 }

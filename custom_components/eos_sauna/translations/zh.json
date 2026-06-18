@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "温度" },
-      "humidity": { "name": "湿度" },
-      "heater_on_for": { "name": "加热时长" },
-      "ready_in": { "name": "预计就绪" },
-      "last_session_duration": { "name": "上次使用时长" },
-      "sessions_this_week": { "name": "本周使用次数" },
-      "target_temperature": { "name": "目标温度" },
+      "temperature": {
+        "name": "温度"
+      },
+      "humidity": {
+        "name": "湿度"
+      },
+      "heater_on_for": {
+        "name": "加热时长"
+      },
+      "ready_in": {
+        "name": "预计就绪"
+      },
+      "last_session_duration": {
+        "name": "上次使用时长"
+      },
+      "sessions_this_week": {
+        "name": "本周使用次数"
+      },
+      "target_temperature": {
+        "name": "目标温度"
+      },
       "status": {
         "name": "状态",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "冷却中"
         }
       },
-      "last_seen": { "name": "最后在线" },
-      "rssi": { "name": "信号强度" },
-      "total_hours": { "name": "总运行时间" }
+      "last_seen": {
+        "name": "最后在线"
+      },
+      "rssi": {
+        "name": "信号强度"
+      },
+      "total_hours": {
+        "name": "总运行时间"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "蒸汽发生器" },
-      "presence": { "name": "存在检测" }
+      "steamer": {
+        "name": "蒸汽发生器"
+      },
+      "presence": {
+        "name": "存在检测"
+      },
+      "connectivity": {
+        "name": "连接状态"
+      }
     },
     "light": {
-      "light": { "name": "灯光" }
+      "light": {
+        "name": "灯光"
+      }
     }
   }
 }

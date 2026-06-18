@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Температура" },
-      "humidity": { "name": "Влажност" },
-      "heater_on_for": { "name": "Време за нагряване" },
-      "ready_in": { "name": "Готовност след" },
-      "last_session_duration": { "name": "Продължителност на последната сесия" },
-      "sessions_this_week": { "name": "Сесии тази седмица" },
-      "target_temperature": { "name": "Целева температура" },
+      "temperature": {
+        "name": "Температура"
+      },
+      "humidity": {
+        "name": "Влажност"
+      },
+      "heater_on_for": {
+        "name": "Време за нагряване"
+      },
+      "ready_in": {
+        "name": "Готовност след"
+      },
+      "last_session_duration": {
+        "name": "Продължителност на последната сесия"
+      },
+      "sessions_this_week": {
+        "name": "Сесии тази седмица"
+      },
+      "target_temperature": {
+        "name": "Целева температура"
+      },
       "status": {
         "name": "Състояние",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Охлаждане"
         }
       },
-      "last_seen": { "name": "Последно видяно" },
-      "rssi": { "name": "Сила на сигнала" },
-      "total_hours": { "name": "Общо часове" }
+      "last_seen": {
+        "name": "Последно видяно"
+      },
+      "rssi": {
+        "name": "Сила на сигнала"
+      },
+      "total_hours": {
+        "name": "Общо часове"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Парогенератор" },
-      "presence": { "name": "Присъствие" }
+      "steamer": {
+        "name": "Парогенератор"
+      },
+      "presence": {
+        "name": "Присъствие"
+      },
+      "connectivity": {
+        "name": "Връзка"
+      }
     },
     "light": {
-      "light": { "name": "Светлина" }
+      "light": {
+        "name": "Светлина"
+      }
     }
   }
 }

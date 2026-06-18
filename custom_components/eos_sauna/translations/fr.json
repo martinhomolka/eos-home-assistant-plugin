@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Température" },
-      "humidity": { "name": "Humidité" },
-      "heater_on_for": { "name": "Durée de chauffage" },
-      "ready_in": { "name": "Prêt dans" },
-      "last_session_duration": { "name": "Durée dernière session" },
-      "sessions_this_week": { "name": "Sessions cette semaine" },
-      "target_temperature": { "name": "Température cible" },
+      "temperature": {
+        "name": "Température"
+      },
+      "humidity": {
+        "name": "Humidité"
+      },
+      "heater_on_for": {
+        "name": "Durée de chauffage"
+      },
+      "ready_in": {
+        "name": "Prêt dans"
+      },
+      "last_session_duration": {
+        "name": "Durée dernière session"
+      },
+      "sessions_this_week": {
+        "name": "Sessions cette semaine"
+      },
+      "target_temperature": {
+        "name": "Température cible"
+      },
       "status": {
         "name": "État",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Refroidissement"
         }
       },
-      "last_seen": { "name": "Dernière activité" },
-      "rssi": { "name": "Puissance du signal" },
-      "total_hours": { "name": "Heures totales" }
+      "last_seen": {
+        "name": "Dernière activité"
+      },
+      "rssi": {
+        "name": "Puissance du signal"
+      },
+      "total_hours": {
+        "name": "Heures totales"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Générateur de vapeur" },
-      "presence": { "name": "Présence" }
+      "steamer": {
+        "name": "Générateur de vapeur"
+      },
+      "presence": {
+        "name": "Présence"
+      },
+      "connectivity": {
+        "name": "Connexion"
+      }
     },
     "light": {
-      "light": { "name": "Lumière" }
+      "light": {
+        "name": "Lumière"
+      }
     }
   }
 }

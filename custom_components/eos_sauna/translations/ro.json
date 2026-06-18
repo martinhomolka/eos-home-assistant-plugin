@@ -59,13 +59,27 @@
   },
   "entity": {
     "sensor": {
-      "temperature": { "name": "Temperatură" },
-      "humidity": { "name": "Umiditate" },
-      "heater_on_for": { "name": "Durata încălzirii" },
-      "ready_in": { "name": "Gata în" },
-      "last_session_duration": { "name": "Durata ultimei sesiuni" },
-      "sessions_this_week": { "name": "Sesiuni săptămâna aceasta" },
-      "target_temperature": { "name": "Temperatură țintă" },
+      "temperature": {
+        "name": "Temperatură"
+      },
+      "humidity": {
+        "name": "Umiditate"
+      },
+      "heater_on_for": {
+        "name": "Durata încălzirii"
+      },
+      "ready_in": {
+        "name": "Gata în"
+      },
+      "last_session_duration": {
+        "name": "Durata ultimei sesiuni"
+      },
+      "sessions_this_week": {
+        "name": "Sesiuni săptămâna aceasta"
+      },
+      "target_temperature": {
+        "name": "Temperatură țintă"
+      },
       "status": {
         "name": "Stare",
         "state": {
@@ -76,16 +90,31 @@
           "cooling": "Răcire"
         }
       },
-      "last_seen": { "name": "Ultima activitate" },
-      "rssi": { "name": "Puterea semnalului" },
-      "total_hours": { "name": "Total ore" }
+      "last_seen": {
+        "name": "Ultima activitate"
+      },
+      "rssi": {
+        "name": "Puterea semnalului"
+      },
+      "total_hours": {
+        "name": "Total ore"
+      }
     },
     "binary_sensor": {
-      "steamer": { "name": "Generator de abur" },
-      "presence": { "name": "Prezență" }
+      "steamer": {
+        "name": "Generator de abur"
+      },
+      "presence": {
+        "name": "Prezență"
+      },
+      "connectivity": {
+        "name": "Conexiune"
+      }
     },
     "light": {
-      "light": { "name": "Lumină" }
+      "light": {
+        "name": "Lumină"
+      }
     }
   }
 }

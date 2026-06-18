@@ -309,6 +309,17 @@ class EosDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     return ts * 1000 if ts < 1_000_000_000_000 else ts
         return None
 
+    def device_connected(self, device_id: str) -> bool | None:
+        """Return whether the device is currently connected to the cloud."""
+        payload = self.device_states.get(device_id)
+        if not isinstance(payload, dict):
+            return None
+        conn = payload.get("connectionState")
+        if not isinstance(conn, dict):
+            return None
+        connected = conn.get("connected")
+        return bool(connected) if connected is not None else None
+
     def sauna_reports_heat_on(self, device_id: str) -> bool:
         """Return whether the device reports the sauna as active / heating."""
         state = self.get_device_shadow_state(device_id)
