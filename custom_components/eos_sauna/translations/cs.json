@@ -2,6 +2,13 @@
   "title": "EOS Sauna",
   "config": {
     "step": {
+      "reauth_confirm": {
+        "title": "Znovu přihlásit účet EOS",
+        "description": "EOS Cloud odmítl uložené heslo pro {email}. Zadejte aktuální heslo.",
+        "data": {
+          "password": "Heslo"
+        }
+      },
       "user": {
         "title": "Připojení k EOS Cloud",
         "description": "Zadejte přihlašovací údaje k účtu EOS Cloud.",
@@ -34,7 +41,8 @@
     },
     "abort": {
       "already_configured": "Tento účet EOS je již nakonfigurován.",
-      "reconfigure_successful": "Účet EOS aktualizován."
+      "reconfigure_successful": "Účet EOS aktualizován.",
+      "reauth_successful": "Opětovné přihlášení proběhlo úspěšně."
     }
   },
   "options": {

@@ -13,6 +13,13 @@ from .const import API_TOKEN_TIMEOUT, DEFAULT_STAGE, endpoint_config_url
 
 _LOGGER = logging.getLogger(__name__)
 
+# Only these statuses from the auth endpoints mean "the credentials were refused".
+# Anything else (5xx, 429, a gateway error) is a transient service problem and must
+# not be reported as an authentication failure: Home Assistant stops polling for good
+# after ConfigEntryAuthFailed, so a network blip would otherwise kill the integration.
+_AUTH_REJECTED_STATUSES = (400, 401, 403)
+_REQUEST_TIMEOUT_SEC = 15
+
 
 class EosAPIError(Exception):
     """Base exception for EOS API errors."""
@@ -53,10 +60,16 @@ class EosAPI:
         """Fetch and cache API endpoint configuration."""
         if self._endpoint_config is None:
             session = self._get_session()
-            async with session.get(endpoint_config_url(self._stage)) as response:
-                if response.status != 200:
-                    raise EosAPIError(f"Failed to fetch endpoint config: {response.status}")
-                self._endpoint_config = await response.json()
+            try:
+                async with session.get(
+                    endpoint_config_url(self._stage),
+                    timeout=aiohttp.ClientTimeout(total=_REQUEST_TIMEOUT_SEC),
+                ) as response:
+                    if response.status != 200:
+                        raise EosAPIError(f"Failed to fetch endpoint config: {response.status}")
+                    self._endpoint_config = await response.json()
+            except (ClientError, TimeoutError) as err:
+                raise EosAPIError("network_error") from err
         return self._endpoint_config
 
     async def _authenticate(self) -> None:
@@ -78,20 +91,24 @@ class EosAPI:
         }
 
         try:
-            response = await session.post(
+            async with session.post(
                 f"{auth_base}/auth/token",
                 json=payload,
                 headers=headers,
-                timeout=aiohttp.ClientTimeout(total=15),
-            )
-        except ClientError as err:
-            raise EosAuthenticationError("network_error") from err
+                timeout=aiohttp.ClientTimeout(total=_REQUEST_TIMEOUT_SEC),
+            ) as response:
+                if response.status in _AUTH_REJECTED_STATUSES:
+                    _LOGGER.warning("EOS auth rejected (%s)", response.status)
+                    raise EosAuthenticationError("invalid_auth")
+                if response.status != 200:
+                    _LOGGER.warning("EOS auth service error (%s)", response.status)
+                    raise EosAPIError(f"auth_http_{response.status}")
+                data: dict[str, Any] = await response.json()
+        except (ClientError, TimeoutError) as err:
+            # A network failure is NOT a credential failure — keep it an EosAPIError so
+            # the coordinator raises UpdateFailed and keeps polling.
+            raise EosAPIError("network_error") from err
 
-        if response.status != 200:
-            _LOGGER.warning("EOS auth failed (%s)", response.status)
-            raise EosAuthenticationError("invalid_auth")
-
-        data: dict[str, Any] = await response.json()
         self._id_token = data.get("idToken")
         self._refresh_token = data.get("refreshToken")
 
@@ -123,22 +140,25 @@ class EosAPI:
             "Accept": "application/json",
         }
 
+        data: dict[str, Any] | None = None
         try:
-            response = await session.post(
+            async with session.post(
                 f"{auth_base}/auth/refresh",
                 json=payload,
                 headers=headers,
-                timeout=aiohttp.ClientTimeout(total=15),
-            )
-        except ClientError as err:
-            raise EosAuthenticationError("network_error") from err
+                timeout=aiohttp.ClientTimeout(total=_REQUEST_TIMEOUT_SEC),
+            ) as response:
+                if response.status == 200:
+                    data = await response.json()
+                else:
+                    _LOGGER.warning("EOS token refresh failed (%s), re-authenticating", response.status)
+        except (ClientError, TimeoutError) as err:
+            raise EosAPIError("network_error") from err
 
-        if response.status != 200:
-            _LOGGER.warning("EOS token refresh failed (%s), re-authenticating", response.status)
+        if data is None:
             await self._authenticate()
             return
 
-        data: dict[str, Any] = await response.json()
         self._id_token = data.get("idToken")
         if self._id_token:
             self._token_expires_at = datetime.now() + timedelta(seconds=API_TOKEN_TIMEOUT)
@@ -199,7 +219,7 @@ class EosAPI:
 
                 return dict(await response.json())
 
-        except ClientError as err:
+        except (ClientError, TimeoutError) as err:
             raise EosAPIError("network_error") from err
 
     async def get_devices(self) -> list[dict[str, Any]]:
