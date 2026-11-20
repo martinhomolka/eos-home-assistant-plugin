@@ -41,9 +41,13 @@
     "step": {
       "init": {
         "title": "EOS Sauna options",
-        "description": "Adjust how often Home Assistant refreshes data from EOS Cloud.",
+        "description": "Adjust how often Home Assistant refreshes data from EOS Cloud, and optionally control the controller directly over the local network.",
         "data": {
-          "poll_interval_seconds": "Polling interval in seconds"
+          "poll_interval_seconds": "Polling interval in seconds",
+          "local_host": "Controller address on the local network (optional)"
+        },
+        "data_description": {
+          "local_host": "IP address or hostname of the sauna controller itself, e.g. 192.168.1.50. When set, switch and target-temperature commands go straight to the controller over the local network instead of through the cloud, falling back to the cloud if that fails."
         }
       }
     }

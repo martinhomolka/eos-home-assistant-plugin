@@ -14,7 +14,14 @@ from homeassistant.helpers import aiohttp_client
 from homeassistant.helpers.selector import SelectSelector, SelectSelectorConfig, SelectSelectorMode
 
 from .api import EosAPI, EosAPIError, EosAuthenticationError
-from .const import AVAILABLE_STAGES, CONF_STAGE, DEFAULT_STAGE, DOMAIN, UPDATE_INTERVAL
+from .const import (
+    AVAILABLE_STAGES,
+    CONF_LOCAL_HOST,
+    CONF_STAGE,
+    DEFAULT_STAGE,
+    DOMAIN,
+    UPDATE_INTERVAL,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -84,7 +91,11 @@ def _build_options_schema(options: dict[str, Any]) -> vol.Schema:
                     "poll_interval_seconds",
                     int(UPDATE_INTERVAL.total_seconds()),
                 ),
-            ): vol.Coerce(int)
+            ): vol.Coerce(int),
+            vol.Optional(
+                CONF_LOCAL_HOST,
+                description={"suggested_value": options.get(CONF_LOCAL_HOST, "")},
+            ): str,
         }
     )
 

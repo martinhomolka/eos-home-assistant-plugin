@@ -131,9 +131,28 @@ class EosClimate(EosBaseEntity, ClimateEntity):
         return round(humidity) if humidity is not None else None
 
     def _active_profile_index(self) -> int | None:
-        """Return the selected program slot (0-3), if known."""
-        raw = self._get_state().get("activeProfile")
-        return int(raw) if raw is not None else None
+        """Return the selected program slot (0-3), if known.
+
+        Some controllers (EOS_H2N) never publish ``activeProfile`` in their shadow, so
+        fall back to the slot whose stored target matches the live ``targetTemp``. That
+        only ever picks a slot the device is demonstrably already using; when nothing
+        matches we return None rather than guessing and overwriting a saved program.
+        """
+        state = self._get_state()
+        raw = state.get("activeProfile")
+        if raw is not None:
+            return int(raw)
+
+        target = state.get("targetTemp")
+        profiles = state.get("profiles")
+        if target is not None and isinstance(profiles, dict):
+            for key, prof in profiles.items():
+                if isinstance(prof, dict) and prof.get("targetTemp") == target:
+                    try:
+                        return int(key)
+                    except (TypeError, ValueError):
+                        continue
+        return None
 
     def _reported_target_temperature(self) -> float | None:
         """Target temperature from active profile, shadow, or telemetry."""

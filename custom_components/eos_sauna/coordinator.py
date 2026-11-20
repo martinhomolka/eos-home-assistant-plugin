@@ -16,6 +16,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 
 from .api import EosAPI, EosAPIError, EosAuthenticationError
 from .const import (
+    CONF_LOCAL_HOST,
     CONF_STAGE,
     CONTROLLER_DEVICE_TYPES,
     DEFAULT_STAGE,
@@ -57,6 +58,7 @@ class EosDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             password=entry.data[CONF_PASSWORD],
             session=aiohttp_client.async_get_clientsession(hass),
             stage=entry.data.get(CONF_STAGE, DEFAULT_STAGE),
+            local_host=entry.options.get(CONF_LOCAL_HOST),
         )
 
         self.devices: dict[str, dict[str, Any]] = {}

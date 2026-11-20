@@ -51,3 +51,26 @@ SAUNA_SENSOR_STATUS_BY_CODE = {
     3: "cooling",
 }
 SAUNA_SENSOR_STATUS_OPTIONS = list(SAUNA_SENSOR_STATUS_BY_CODE.values())
+
+# Optional direct-LAN control of the controller itself.
+#
+# The controller runs its own configuration web server, and that page's JavaScript sends
+# switch commands to `POST /__/usr/eos/setcld`. That record is the "external command"
+# side of the controller: every key ending in `xc` has an `xd` mirror in
+# `GET /__/usr/eos/setdev`, which is the wall panel's own state. So this is the device's
+# documented control path, not a back door -- and it keeps working when the cloud
+# command endpoint is unavailable.
+#
+# Host only, no scheme and no path, e.g. "192.168.1.50".
+CONF_LOCAL_HOST = "local_host"
+LOCAL_API_PREFIX = "/__"
+LOCAL_SETCLD_PATH = "/usr/eos/setcld"
+LOCAL_TIMEOUT_SEC = 8
+
+# Cloud command `type` -> key in the controller's `setcld` record. A command type that is
+# absent here has no known local equivalent and always goes to the cloud.
+LOCAL_SWITCH_KEYS = {
+    "SAUNA": "Sxc",
+    "LIGHTS": "Lxc",
+    "STEAMER": "Vxc",
+}

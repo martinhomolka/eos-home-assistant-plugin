@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 from datetime import datetime, timedelta
 from typing import Any
@@ -9,7 +10,15 @@ from typing import Any
 import aiohttp
 from aiohttp import ClientError
 
-from .const import API_TOKEN_TIMEOUT, DEFAULT_STAGE, endpoint_config_url
+from .const import (
+    API_TOKEN_TIMEOUT,
+    DEFAULT_STAGE,
+    LOCAL_API_PREFIX,
+    LOCAL_SETCLD_PATH,
+    LOCAL_SWITCH_KEYS,
+    LOCAL_TIMEOUT_SEC,
+    endpoint_config_url,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -31,8 +40,10 @@ class EosAPI:
         password: str,
         session: aiohttp.ClientSession | None = None,
         stage: str = DEFAULT_STAGE,
+        local_host: str | None = None,
     ) -> None:
         """Initialize the EOS API client."""
+        self._local_host = (local_host or "").strip().rstrip("/") or None
         self._email = email
         self._password = password
         self._session = session
@@ -194,8 +205,11 @@ class EosAPI:
                 if response.status in (401, 403):
                     raise EosAuthenticationError("invalid_auth")
                 if response.status != 200:
-                    _LOGGER.warning("EOS API request failed (%s)", response.status)
-                    raise EosAPIError("cannot_connect")
+                    body = (await response.text())[:200]
+                    _LOGGER.warning(
+                        "EOS API request failed (%s) %s %s: %s", response.status, method, url, body
+                    )
+                    raise EosAPIError(f"http_{response.status}: {body}")
 
                 return dict(await response.json())
 
@@ -291,6 +305,63 @@ class EosAPI:
 
         return {**last_payload, "measurements": all_measurements}
 
+    async def _local_setcld(self, payload: dict[str, int]) -> dict[str, Any]:
+        """Write a command record to the controller over the LAN.
+
+        Returns the record the controller echoes back, so the caller can confirm the
+        value it asked for was accepted.
+        """
+        if not self._local_host:
+            raise EosAPIError("No local host configured")
+
+        url = f"http://{self._local_host}{LOCAL_API_PREFIX}{LOCAL_SETCLD_PATH}"
+        session = self._get_session()
+        # The controller's own page posts a bare JSON body terminated by CRLF, with no
+        # JSON content type. It rejects a request without the trailing CRLF.
+        async with session.post(
+            url,
+            data=json.dumps(payload) + "\r\n",
+            headers={"Content-Type": "text/plain;charset=UTF-8"},
+            timeout=aiohttp.ClientTimeout(total=LOCAL_TIMEOUT_SEC),
+        ) as response:
+            text = await response.text()
+            if response.status != 200:
+                raise EosAPIError(f"Local command failed: http_{response.status}: {text[:200]}")
+            try:
+                return json.loads(text)
+            except ValueError as err:
+                raise EosAPIError(f"Local command returned non-JSON: {text[:200]}") from err
+
+    async def _set_switch(self, device_id: str, command_type: str, turn_on: bool) -> None:
+        """Flip one of the controller's switches, over the LAN when that is possible.
+
+        The LAN path is tried first because the cloud command endpoint is the one piece of
+        this API that fails on some accounts; a failure there falls back to the cloud so a
+        misconfigured or unplugged controller still behaves as it did before.
+        """
+        key = LOCAL_SWITCH_KEYS.get(command_type)
+        if self._local_host and key:
+            want = 1 if turn_on else 0
+            try:
+                echoed = await self._local_setcld({key: want})
+                if echoed.get(key) == want:
+                    return
+                _LOGGER.warning(
+                    "Local %s command was accepted but echoed %s=%s, falling back to cloud",
+                    command_type,
+                    key,
+                    echoed.get(key),
+                )
+            except (EosAPIError, ClientError, TimeoutError) as err:
+                _LOGGER.warning(
+                    "Local %s command failed (%s), falling back to cloud", command_type, err
+                )
+
+        await self.send_command(
+            device_id,
+            {"type": command_type, "state": "on" if turn_on else "off"},
+        )
+
     async def set_profile(self, device_id: str, profile_index: int) -> None:
         """Select the active sauna program / profile slot (0-3)."""
         config = await self._get_endpoint_config()
@@ -313,6 +384,29 @@ class EosAPI:
         profile_index: int | None = None,
     ) -> None:
         """Set target temperature and humidity (optionally for a specific profile slot)."""
+        if self._local_host:
+            # Locally the live setpoint is writable directly, so no profile slot is needed.
+            try:
+                echoed = await self._local_setcld({"Tc": int(temperature), "Hc": int(humidity)})
+                if echoed.get("Tc") == int(temperature):
+                    return
+                _LOGGER.warning(
+                    "Local target was accepted but echoed Tc=%s, falling back to cloud",
+                    echoed.get("Tc"),
+                )
+            except (EosAPIError, ClientError, TimeoutError) as err:
+                _LOGGER.warning("Local target write failed (%s), falling back to cloud", err)
+
+        if profile_index is None:
+            # The cloud endpoint rejects a target write without a profile slot, and some
+            # controllers never report which slot is active -- see set_target's caller.
+            raise EosAPIError(
+                "The controller does not report which program is active, so Home Assistant "
+                "cannot tell which program slot to write the target into. Pick a program "
+                "(preset) on the thermostat card first, or set a local host in the "
+                "integration's options to write the target directly."
+            )
+
         config = await self._get_endpoint_config()
         device_base = config.get("endpoints", {}).get("RestApi", {}).get("device", {}).get("https")
         if not device_base:
@@ -349,24 +443,15 @@ class EosAPI:
 
     async def set_sauna_state(self, device_id: str, turn_on: bool) -> None:
         """Turn the sauna on or off."""
-        await self.send_command(
-            device_id,
-            {"type": "SAUNA", "state": "on" if turn_on else "off"},
-        )
+        await self._set_switch(device_id, "SAUNA", turn_on)
 
     async def set_fan_state(self, device_id: str, turn_on: bool) -> None:
         """Turn the fan on or off."""
-        await self.send_command(
-            device_id,
-            {"type": "FAN", "state": "on" if turn_on else "off"},
-        )
+        await self._set_switch(device_id, "FAN", turn_on)
 
     async def set_light_state(self, device_id: str, turn_on: bool) -> None:
         """Turn the sauna lights on or off."""
-        await self.send_command(
-            device_id,
-            {"type": "LIGHTS", "state": "on" if turn_on else "off"},
-        )
+        await self._set_switch(device_id, "LIGHTS", turn_on)
 
     async def close(self) -> None:
         """Close the API client session if owned by this instance."""
