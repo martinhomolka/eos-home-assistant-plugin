@@ -1,12 +1,14 @@
 {
   "domain": "eos_sauna",
   "name": "EOS Sauna",
-  "codeowners": ["@Marcel-Klug"],
+  "codeowners": [
+    "@Marcel-Klug"
+  ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/Marcel-Klug/eos-home-assistant-plugin",
+  "documentation": "https://github.com/martinhomolka/eos-home-assistant-plugin",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/Marcel-Klug/eos-home-assistant-plugin/issues",
+  "issue_tracker": "https://github.com/martinhomolka/eos-home-assistant-plugin/issues",
   "requirements": [],
-  "version": "0.1.0"
+  "version": "0.1.1-hmlk1"
 }
