@@ -2,6 +2,13 @@
   "title": "EOS Sauna",
   "config": {
     "step": {
+      "reauth_confirm": {
+        "title": "Re-authenticate EOS account",
+        "description": "EOS Cloud rejected the stored password for {email}. Enter the current password.",
+        "data": {
+          "password": "Password"
+        }
+      },
       "user": {
         "title": "Connect to EOS Cloud",
         "description": "Enter your EOS Cloud account credentials.",
@@ -34,7 +41,8 @@
     },
     "abort": {
       "already_configured": "This EOS account is already configured.",
-      "reconfigure_successful": "EOS account updated."
+      "reconfigure_successful": "EOS account updated.",
+      "reauth_successful": "Re-authentication was successful."
     }
   },
   "options": {
